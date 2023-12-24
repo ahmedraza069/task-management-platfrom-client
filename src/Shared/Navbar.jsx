@@ -50,6 +50,19 @@ const Navbar = () => {
               </li>
               <li>
                 <NavLink
+                  to="/services"
+                  className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "text-blue" : ""
+                  }
+                  style={{
+                    transition: "border-bottom-color 0.3s, color 0.3s",
+                  }}
+                >
+                  Services
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
                   to="/contact"
                   className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? "text-blue" : ""
@@ -87,6 +100,21 @@ const Navbar = () => {
               }}
             >
               Home
+            </NavLink>
+            <NavLink
+              to="/services"
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? "pending"
+                  : isActive
+                  ? "border-b-2 border-blue text-blue"
+                  : ""
+              }
+              style={{
+                transition: "border-bottom-color 0.3s, color 0.3s",
+              }}
+            >
+              Services
             </NavLink>
 
             <NavLink

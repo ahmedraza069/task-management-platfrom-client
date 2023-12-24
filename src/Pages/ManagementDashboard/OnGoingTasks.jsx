@@ -27,6 +27,7 @@ const OnGoingTasks = () => {
             axiosUsers.delete(`/tasks/${id}`).then((res) => {
               console.log(res);
               if (res.data.deletedCount > 0) {
+                refetch()
                 Swal.fire({
                   title: "Deleted!",
                   text: "Your file has been deleted.",
@@ -46,10 +47,12 @@ const OnGoingTasks = () => {
             refetch()
             Swal.fire({
               position: "top-end",
-              icon: "success",
-              title: "Now You Are Admin",
+              icon: 'success',
+              title: 'Task Completed!',
+              text: 'The task has been successfully marked as completed.',
+              timer: 2000,
               showConfirmButton: false,
-              timer: 1500,
+              
             });
           }
         });

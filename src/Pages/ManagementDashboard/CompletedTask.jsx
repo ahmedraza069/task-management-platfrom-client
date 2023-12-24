@@ -26,6 +26,7 @@ const CompletedTask = () => {
             axiosUsers.delete(`/tasks/${id}`).then((res) => {
               console.log(res);
               if (res.data.deletedCount > 0) {
+                refetch()
                 Swal.fire({
                   title: "Deleted!",
                   text: "Your file has been deleted.",

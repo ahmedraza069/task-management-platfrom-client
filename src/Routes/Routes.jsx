@@ -12,6 +12,9 @@ import NewTasks from "../Pages/ManagementDashboard/NewTasks";
 
 import OnGoingTasks from "../Pages/ManagementDashboard/OnGoingTasks";
 import CompletedTask from "../Pages/ManagementDashboard/CompletedTask";
+import Features from "../Pages/Features/Features";
+import PrivateRoute from './PrivateRoute'
+
 
 const router = createBrowserRouter([
   {
@@ -23,6 +26,10 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
+        path: "/services",
+        element: <Features></Features>,
+      },
+      {
         path: "/contact",
         element: <Contact></Contact>,
       },
@@ -32,14 +39,16 @@ const router = createBrowserRouter([
         element: <Register></Register>,
       },
       {
-        path: "profile",
+        path: "/profile",
         element: <Profile></Profile>,
       },
     ],
   },
   {
     path: "/",
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute>
+      <Dashboard></Dashboard>
+    </PrivateRoute>,
     children: [
       {
         path: "summary",
@@ -57,6 +66,7 @@ const router = createBrowserRouter([
         path: "complete-tasks",
         element: <CompletedTask></CompletedTask>,
       },
+    
     ],
   },
 ]);

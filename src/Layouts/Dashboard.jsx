@@ -22,7 +22,7 @@ const Dashboard = () => {
       <Helmet>
         <title>Express Times | Dashboard</title>
       </Helmet>
-      <PageTitle
+      <PageTitle heading={'Dashboard'}
       ></PageTitle>
       <div className="pt-8 container mx-auto">
         <div className="drawer lg:drawer-open">

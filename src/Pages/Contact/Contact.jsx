@@ -11,7 +11,7 @@ const Contact = () => {
       const {user} = useContext(AuthContext)
     return (
         <div>
-            <PageTitle></PageTitle>
+            <PageTitle heading={'Contact'}></PageTitle>
              <div>
            <Helmet>
         <title>Express Times | Contacts</title>

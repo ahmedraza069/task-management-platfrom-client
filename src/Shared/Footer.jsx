@@ -20,10 +20,10 @@ const Footer = () => {
 				<a rel="noopener noreferrer" href="#">Instagram</a>
 			</li>
 			<li>
-				<a rel="noopener noreferrer" href="#">Facebook</a>
+				<a rel="noopener noreferrer" href="https://web.facebook.com/mind.hack.376"  target="_blank" >Facebook</a>
 			</li>
 			<li>
-				<a rel="noopener noreferrer" href="#">Twitter</a>
+				<a rel="noopener noreferrer" href="https://twitter.com/ahmedraza_069" target="_blank">Twitter</a>
 			</li>
 		</ul>
 	</div>

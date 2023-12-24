@@ -15,7 +15,7 @@ const Profile = () => {
      <title>Express Times | Profile</title>
    </Helmet>
          <div>
-          <PageTitle></PageTitle>
+          <PageTitle heading={'Profile'}></PageTitle>
          <section className="text-gray-600 body-font">
 <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col bg-blue text-white">
      <img className="w-48 mb-6 object-cover object-center rounded-lg" src={user?.photoURL} alt=""  />

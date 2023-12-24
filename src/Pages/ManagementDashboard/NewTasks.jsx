@@ -16,24 +16,42 @@ const NewTasks = () => {
   const [tasks, refetch] = useAxiosTasks();
   const { register, handleSubmit } = useForm();
 
-  const todoData = tasks?.filter((task) => task.status === 'todo')
-  console.log(todoData);
+  const todoData = tasks?.filter((task) => task.status === "todo");
 
   const onSubmit = async (data, e) => {
     const tasks = {
       email: user?.email,
       name: user?.displayName,
       title: data.title,
-      date: data.date,
+      priority: data.priority,
+      startDate: data.startDate,
+      endDate: data.deadlinesDate,
       description: data.description,
       status: "todo",
     };
 
     axiosUsers
       .post("/tasks", tasks)
-      .then((res) => console.log(res.data))
-
-      .catch((err) => console.log(err));
+      .then((res) => {
+        console.log(res.data);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Task Added to Todo Successfully!",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          refetch();
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+        });
+      });
 
     e.target.reset();
   };
@@ -52,6 +70,7 @@ const NewTasks = () => {
         axiosUsers.delete(`/tasks/${id}`).then((res) => {
           console.log(res);
           if (res.data.deletedCount > 0) {
+            refetch();
             Swal.fire({
               title: "Deleted!",
               text: "Your file has been deleted.",
@@ -64,21 +83,23 @@ const NewTasks = () => {
   };
 
   const handleUpdateStatus = (id) => {
-    const status = 'ongoing';
-    axiosUsers.patch(`/tasks/${id}`, {status}).then((res) => {
+    const status = "ongoing";
+    axiosUsers.patch(`/tasks/${id}`, { status }).then((res) => {
       console.log(res.data);
-      if (res.data.modifiedCount > 0){
-        refetch()
+      if (res.data.modifiedCount > 0) {
+        refetch();
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: "Now You Are Admin",
-          showConfirmButton: false,
+          title: "Task Moved to Ongoing!",
+          text: "The task has been successfully marked as ongoing",
           timer: 1500,
+          showConfirmButton: false,
         });
       }
     });
   };
+
 
   return (
     <div>
@@ -102,14 +123,43 @@ const NewTasks = () => {
                     className="input input-bordered text-black w-full max-w-xs"
                   />
                 </label>
+
                 <label className="form-control w-full max-w-xs">
                   <div className="label">
-                    <span className="label-text text-white">Date:</span>
+                    <span className="label-text text-white">Priority:</span>
+                  </div>
+                  <select
+                    {...register("priority")}
+                    required
+                    className=" select select-bordered text-black w-full max-w-xs"
+                  >
+                    <option value="">Select a poirity</option>
+                    <option value="low">Low</option>
+                    <option value="moderate">Moderate</option>
+                    <option value="high">High</option>
+                  </select>
+                </label>
+              </div>
+              <div className="flex gap-4">
+                <label className="form-control w-full max-w-xs">
+                  <div className="label">
+                    <span className="label-text text-white">Start Date:</span>
                   </div>
                   <input
-                    {...register("date")}
-                    value={`${moment().format("ddd, MMM D, YYYY")}`}
-                    type="text"
+                    {...register("startDate")}
+                    defaultValue={moment().format("YYYY-MM-DD")}
+                    type="date"
+                    required
+                    className="input input-bordered text-black w-full max-w-xs"
+                  />
+                </label>
+                <label className="form-control w-full max-w-xs">
+                  <div className="label">
+                    <span className="label-text text-white">Deadlines: </span>
+                  </div>
+                  <input
+                    {...register("deadlinesDate")}
+                    type="date"
                     required
                     placeholder="Type here"
                     className="input input-bordered text-black w-full max-w-xs"
@@ -148,6 +198,7 @@ const NewTasks = () => {
                 index={index}
                 handleUpdateStatus={handleUpdateStatus}
                 handleDeleteTasks={handleDeleteTasks}
+                
               />
             ))}
           </div>
