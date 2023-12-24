@@ -20,7 +20,7 @@ const Dashboard = () => {
     <div>
       <Navbar></Navbar>
       <Helmet>
-        <title>Express Times | Dashboard</title>
+        <title>Task Management | Dashboard</title>
       </Helmet>
       <PageTitle heading={'Dashboard'}
       ></PageTitle>

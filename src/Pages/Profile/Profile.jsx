@@ -12,7 +12,7 @@ const Profile = () => {
         <div>
           
         <Helmet>
-     <title>Express Times | Profile</title>
+     <title>Task Management | Profile</title>
    </Helmet>
          <div>
           <PageTitle heading={'Profile'}></PageTitle>

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosUsers = axios.create({
-    baseURL: 'http://localhost:5000/'
+    baseURL: 'https://task-management-platfrom-server.vercel.app/'
 })
 const useAxiosUsers = () => {
     return axiosUsers;

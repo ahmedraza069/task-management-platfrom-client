@@ -3,9 +3,13 @@
 import { FaBiohazard } from "react-icons/fa";
 import PageTitle from "../../Shared/PageTitle";
 import './Features.css'
+import { Helmet } from "react-helmet-async";
 const Features = () => {
     return (
         <div className="py-8">
+            <Helmet>
+        <title>Task Management | Services</title>
+      </Helmet>
             <PageTitle heading={'Services'}></PageTitle>
             <div className=" py-12 ">
                 <h4 className="text-5xl font-bold text-blue text-center mb-3 ">Our Services</h4>

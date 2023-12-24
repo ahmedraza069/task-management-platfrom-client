@@ -6,9 +6,9 @@ import ToDo from "./ToDo";
 
 const CompletedTask = () => {
     const [tasks, refetch] = useAxiosTasks();
-    console.log(tasks)
+  
     const completedData = tasks?.filter((task) => task?.status === 'completed');
-    console.log(completedData)
+    
 
   const axiosUsers = useAxiosUsers();
  
